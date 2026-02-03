@@ -79,4 +79,30 @@ button {
 
 button:hover {
     background: #555;
+
+}
+/* Thêm style cho nút demo */
+.demo-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+}
+
+.demo-btn:hover {
+    transform: translateX(5px);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Cập nhật navigation cho nhiều link */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
 }
