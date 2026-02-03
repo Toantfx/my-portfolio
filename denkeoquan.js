@@ -77,4 +77,5 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         showStatus('Đèn đang quay... Đưa chuột vào để dừng');
     }, 1000);
+
 });
