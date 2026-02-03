@@ -2,101 +2,43 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đèn Kéo Quân 3D - Bài Tập 29</title>
+    <title>Đèn Kéo Quân 3D - Đào Văn Toàn</title>
     <style>
-        /* Cấu hình chung cho trang */
-        body {
-            background: #1a1a1a;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: sans-serif;
-            perspective: 1200px; /* Tạo độ sâu cho hiệu ứng 3D */
-        }
+        body { background: #111; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; perspective: 1000px; margin: 0; color: white; font-family: sans-serif; }
+        h1 { margin-bottom: 50px; color: #ffd700; }
 
-        h2 { margin-bottom: 50px; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+        /* Khung đèn xoay */
+        .carousel { width: 200px; height: 250px; position: relative; transform-style: preserve-3d; animation: rotate 12s linear infinite; }
+        
+        /* Hiệu ứng dừng khi rê chuột (Yêu cầu bài 29) */
+        .carousel:hover { animation-play-state: paused; cursor: pointer; }
 
-        /* Khung chứa đèn kéo quân */
-        .den-keo-quan {
-            width: 200px;
-            height: 250px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: xoayVong 20s linear infinite; /* Hiệu ứng xoay tròn */
-        }
+        .face { position: absolute; width: 200px; height: 250px; border: 2px solid #ffd700; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); overflow: hidden; }
+        .face img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Dừng xoay khi rê chuột vào (Yêu cầu bài tập) */
-        .den-keo-quan:hover {
-            animation-play-state: paused;
-            cursor: pointer;
-        }
+        /* Vị trí 6 mặt trong không gian 3D */
+        .f1 { transform: rotateY(0deg) translateZ(200px); }
+        .f2 { transform: rotateY(60deg) translateZ(200px); }
+        .f3 { transform: rotateY(120deg) translateZ(200px); }
+        .f4 { transform: rotateY(180deg) translateZ(200px); }
+        .f5 { transform: rotateY(240deg) translateZ(200px); }
+        .f6 { transform: rotateY(300deg) translateZ(200px); }
 
-        /* Cấu hình các mặt của đèn */
-        .mat-den {
-            position: absolute;
-            width: 200px;
-            height: 250px;
-            border: 4px solid #ffd700;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backface-visibility: visible;
-        }
+        @keyframes rotate { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
 
-        .mat-den img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Đảm bảo ảnh không bị méo */
-        }
-
-        /* Sắp xếp 6 mặt thành hình lục giác 3D */
-        /* Khoảng cách đẩy ra (translateZ) khoảng 175px là vừa đẹp cho 6 mặt */
-        .f1 { transform: rotateY(0deg) translateZ(175px); }
-        .f2 { transform: rotateY(60deg) translateZ(175px); }
-        .f3 { transform: rotateY(120deg) translateZ(175px); }
-        .f4 { transform: rotateY(180deg) translateZ(175px); }
-        .f5 { transform: rotateY(240deg) translateZ(175px); }
-        .f6 { transform: rotateY(300deg) translateZ(175px); }
-
-        /* Animation xoay 360 độ */
-        @keyframes xoayVong {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
-        }
-
-        /* Nút quay lại Portfolio */
-        .btn-back {
-            margin-top: 100px;
-            padding: 10px 20px;
-            background: #ffd700;
-            color: #000;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+        .back-link { margin-top: 80px; text-decoration: none; color: #ffd700; border: 1px solid #ffd700; padding: 10px 20px; border-radius: 5px; }
     </style>
 </head>
 <body>
-
-    <h2>Hiệu Ứng Đèn Kéo Quân 3D</h2>
-
-    <div class="den-keo-quan">
-        <div class="mat-den f1"><img src="https://picsum.photos/200/250?random=1" alt="Ảnh 1"></div>
-        <div class="mat-den f2"><img src="https://picsum.photos/200/250?random=2" alt="Ảnh 2"></div>
-        <div class="mat-den f3"><img src="https://picsum.photos/200/250?random=3" alt="Ảnh 3"></div>
-        <div class="mat-den f4"><img src="https://picsum.photos/200/250?random=4" alt="Ảnh 4"></div>
-        <div class="mat-den f5"><img src="https://picsum.photos/200/250?random=5" alt="Ảnh 5"></div>
-        <div class="mat-den f6"><img src="https://picsum.photos/200/250?random=6" alt="Ảnh 6"></div>
+    <h1>Đèn Kéo Quân 3D</h1>
+    <div class="carousel">
+        <div class="face f1"><img src="https://picsum.photos/200/250?random=1"></div>
+        <div class="face f2"><img src="https://picsum.photos/200/250?random=2"></div>
+        <div class="face f3"><img src="https://picsum.photos/200/250?random=3"></div>
+        <div class="face f4"><img src="https://picsum.photos/200/250?random=4"></div>
+        <div class="face f5"><img src="https://picsum.photos/200/250?random=5"></div>
+        <div class="face f6"><img src="https://picsum.photos/200/250?random=6"></div>
     </div>
-
-    <a href="index.html" class="btn-back">Quay lại Portfolio</a>
-
+    <a href="index.html" class="back-link">Quay về Portfolio</a>
 </body>
 </html>
